@@ -5,10 +5,20 @@
     </head>
     <body>
         <h1>Welcome to ANILAB!</h1>
+        <h2>Here are our current recipes: </h2>
+            <div class="recipe-list">
+                <ul>
+                    {% for recipe in recipes %}
+                        <li>{{ recipe.recipe }} <br> <img src = {{ recipe.img }} ></li>
+                    {% endfor %}
+                </ul>
+            </div>
         <p>Put in some information about your recipe.</p>
         <form method="post" action="/your_recipe">
-            <input type="text" name="recipe_name" placeholder="What is the name of your recipe?"/>
-            <input type="text" name="img_url" placeholder="What is the image url for your recipe?"/>
+            <label for="recipe_name">Recipe Name:</label>
+            <input type="text" name="recipe_name" value=""/>
+            <label for="img_url">Image Url for Recipe Photo:</label>
+            <input type="text" name="img_url" value=""/>
             <input type="submit" value="Submit"/>
         </form>
     </body>
