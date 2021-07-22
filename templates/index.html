@@ -4,10 +4,11 @@
         <link rel="stylesheet" type="text/css" href="static/css/style.css?q={{ time }}" />
     </head>
     <body>
-        <h1>Welcome to GifBot!</h1>
-        <p>What kind of gif would you like to see?</p>
-        <form method="post" action="/yourgif">
-            <input type="text" name="gifchoice" placeholder="What kind of gif do you want to see?"/>
+        <h1>Welcome to ANILAB!</h1>
+        <p>Put in some information about your recipe.</p>
+        <form method="post" action="/your_recipe">
+            <input type="text" name="recipe_name" placeholder="What is the name of your recipe?"/>
+            <input type="text" name="img_url" placeholder="What is the image url for your recipe?"/>
             <input type="submit" value="Submit"/>
         </form>
     </body>

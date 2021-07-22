@@ -2,7 +2,7 @@
 # -- Import section --
 from flask import Flask, render_template, request
 from datetime import datetime
-# from model import getImageUrlFrom
+from model import getImageUrlFrom
 import os
 
 # -- Initialization section --
@@ -14,3 +14,11 @@ app = Flask(__name__)
 @app.route('/index')
 def index():
     return render_template("index.html", time = datetime.now())
+
+@app.route('/your_recipe', methods = ['GET', 'POST'])
+def handle_recipe():
+    print(request.form)
+    recipe = request.form['recipe_name']
+    url = request.form['img_url']
+    return render_template("yourgif.html", url = url, recipe=recipe, time = datetime.now())
+
