@@ -2,6 +2,7 @@
     <head>
         <title>Welcome!</title>
         <link rel="stylesheet" type="text/css" href="static/css/style.css?q={{ time }}" />
+        <script src="script.js"></script>
     </head>
     <body>
         <h1>Welcome to ANILAB!</h1>
@@ -9,17 +10,51 @@
             <div class="recipe-list">
                 <ul>
                     {% for recipe in recipes %}
-                        <li>{{ recipe.recipe }} <br> <img src = {{ recipe.img }} ></li>
+                        <li>
+                            {{ recipe.recipe }} contributed by {{recipe.user}}<br> <img src = {{ recipe.img }} >
+                            <br>Ingredients:
+                            <ul>
+                                {% for ingredient in recipe.ingredients %}
+                                    <li>{{ingredient}}</li>
+                                {% endfor %}
+                            </ul>
+                            <br>Steps:
+                            <ol>
+                                {% for step in recipe.recipe_steps %}
+                                    <li>{{step}}</li>
+                                {% endfor %}
+                            </ol>
+                        </li>
                     {% endfor %}
                 </ul>
             </div>
         <p>Put in some information about your recipe.</p>
         <form method="post" action="/your_recipe">
-            <label for="recipe_name">Recipe Name:</label>
-            <input type="text" name="recipe_name" value=""/>
-            <label for="img_url">Image Url for Recipe Photo:</label>
-            <input type="text" name="img_url" value=""/>
-            <input type="submit" value="Submit"/>
+            <ul>
+                <li>            
+                    <label for="user">Your Name:</label>
+                    <input type="text" name="user" value=""/>
+                </li>
+                <li>            
+                    <label for="recipe_name">Recipe Name:</label>
+                    <input type="text" name="recipe_name" value=""/>
+                </li>
+                <li>
+                    <label for="img_url">Image Url for Recipe Photo:</label>
+                    <input type="text" name="img_url" value=""/>
+                </li>
+                <li id = "ingredients">
+                    <label for="ingredients[]">Ingredients:</label>
+                    <input type="text" name="ingredients[]" value=""/>
+                    <button id="addMoreI" onclick="addMoreI()">Add more ingredients</button>
+                </li>
+                <li id = "steps">
+                    <label for="recipe_steps[]">Recipe Steps:</label>
+                    <input type="text" name="recipe_steps[]" value=""/>
+                    <button id="addMoreR" onclick="addMoreR()">Add more steps</button>
+                </li>
+            </ul>
+            <br><input type="submit" value="Submit"/>
         </form>
     </body>
 </html>

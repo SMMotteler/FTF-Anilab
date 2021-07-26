@@ -37,13 +37,14 @@ def handle_recipe():
        print(request.form)
        recipe_name = request.form['recipe_name']
        img_url = request.form['img_url']
- 
+       user = request.form['user']
+       ingredients = request.form['ingredients[]']
+       recipe_steps = request.form['recipe_steps[]']
+
        # get the collection you want to use
        collection = mongo.db.recipe_collection
  
        # insert the new data
-       collection.insert({'recipe': recipe_name, 'img': img_url})
-       recipe = request.form['recipe_name']
-       url = request.form['img_url']
-       return render_template("yourgif.html", url = url, recipe=recipe, time = datetime.now())
+       collection.insert({'recipe': recipe_name, 'img': img_url, 'user': user, 'ingredients': ingredients, 'recipe_steps': recipe_steps})
+       return render_template("yourgif.html", url = img_url, recipe=recipe_name, time = datetime.now(), user=user, ingredients = ingredients, recipe_steps = recipe_steps)
 
