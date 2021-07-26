@@ -53,3 +53,7 @@ def remove_event(recipe_id):
    collection = mongo.db.recipe_collection
    collection.delete_one({'_id': ObjectId(recipe_id)})
    return redirect('/')
+
+@app.route('/homepage')
+def home():
+    return render_template('homepage.html')
