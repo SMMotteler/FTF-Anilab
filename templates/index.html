@@ -12,18 +12,8 @@
                     {% for recipe in recipes %}
                         <li>
                             {{ recipe.recipe }} contributed by {{recipe.user}}<br> <img src = {{ recipe.img }} >
-                            <br>Ingredients:
-                            <ul>
-                                {% for ingredient in recipe.ingredients %}
-                                    <li>{{ingredient}}</li>
-                                {% endfor %}
-                            </ul>
-                            <br>Steps:
-                            <ol>
-                                {% for step in recipe.recipe_steps %}
-                                    <li>{{step}}</li>
-                                {% endfor %}
-                            </ol>
+                            <br>Ingredients: <br> {{ recipe.ingredients }}
+                            <br>Steps: <br> {{recipe.recipe_steps}}
                         </li>
                     {% endfor %}
                 </ul>
@@ -43,18 +33,24 @@
                     <label for="img_url">Image Url for Recipe Photo:</label>
                     <input type="text" name="img_url" value=""/>
                 </li>
-                <li id = "ingredients">
-                    <label for="ingredients[]">Ingredients:</label>
-                    <input type="text" name="ingredients[]" value=""/>
-                    <button id="addMoreI" onclick="addMoreI()">Add more ingredients</button>
-                </li>
-                <li id = "steps">
-                    <label for="recipe_steps[]">Recipe Steps:</label>
-                    <input type="text" name="recipe_steps[]" value=""/>
-                    <button id="addMoreR" onclick="addMoreR()">Add more steps</button>
-                </li>
             </ul>
             <br><input type="submit" value="Submit"/>
         </form>
+        <ul>
+            <li id = "ingredients">
+                <label for="ingredients">Ingredients:</label>
+                    <textarea name="ingredients" rows="4" cols="50">
+                        Put ingredients in this box.
+                    </textarea>
+                <!-- <button id="addMoreI" onclick="addMoreI()">Add more ingredients</button> -->
+            </li>
+            <li id = "steps">
+                <label for="recipe_steps">Recipe Steps:</label>
+                    <textarea name="recipe_steps" rows="4" cols="50">
+                        Put recipe steps in this box.
+                    </textarea>
+                <!-- <button id="addMoreR" onclick="addMoreR()">Add more steps</button> -->
+            </li>
+        </ul>
     </body>
 </html>
