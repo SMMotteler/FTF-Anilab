@@ -14,6 +14,7 @@
                             {{ recipe.recipe }} contributed by {{recipe.user}}<br> <img src = {{ recipe.img }} >
                             <br>Ingredients: <br> {{ recipe.ingredients }}
                             <br>Steps: <br> {{recipe.recipe_steps}}
+                            <br>[<a href='/remove/{{recipe._id }}'>x</a>]
                         </li>
                     {% endfor %}
                 </ul>
@@ -39,15 +40,13 @@
         <ul>
             <li id = "ingredients">
                 <label for="ingredients">Ingredients:</label>
-                    <textarea name="ingredients" rows="4" cols="50">
-                        Put ingredients in this box.
+                    <textarea name="ingredients" rows="4" cols="50">Put ingredients in this box.
                     </textarea>
                 <!-- <button id="addMoreI" onclick="addMoreI()">Add more ingredients</button> -->
             </li>
             <li id = "steps">
                 <label for="recipe_steps">Recipe Steps:</label>
-                    <textarea name="recipe_steps" rows="4" cols="50">
-                        Put recipe steps in this box.
+                    <textarea name="recipe_steps" rows="4" cols="50">Put recipe steps in this box.
                     </textarea>
                 <!-- <button id="addMoreR" onclick="addMoreR()">Add more steps</button> -->
             </li>

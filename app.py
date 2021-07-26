@@ -47,3 +47,9 @@ def handle_recipe():
        collection.insert({'recipe': recipe_name, 'img': img_url, 'user': user, 'ingredients': ingredients, 'recipe_steps': recipe_steps})
        return render_template("yourgif.html", url = img_url, recipe=recipe_name, time = datetime.now())
 
+# Delete one using id
+@app.route('/remove/<recipe_id>')
+def remove_event(recipe_id):
+   collection = mongo.db.recipe_collection
+   collection.delete_one({'_id': ObjectId(recipe_id)})
+   return redirect('/')
