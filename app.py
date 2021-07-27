@@ -63,3 +63,6 @@ def remove_event(recipe_id):
    collection.delete_one({'_id': ObjectId(recipe_id)})
    return redirect('/')
 
+@app.route('/recipes')
+def recipes():
+    return render_template('recipes.html')
