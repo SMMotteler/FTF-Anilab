@@ -71,7 +71,9 @@ def remove_event(recipe_id):
 
 @app.route('/recipes/<recipe_id>')
 def show_recipe(recipe_id):
-   return "This is a placeholder for showing individual recipes"
+    collection = mongo.db.recipe_collection
+    recipe = collection.find_one({'_id': ObjectId(recipe_id)})
+    return render_template("specific_recipe.html", recipe = recipe)
 
 @app.route('/about')
 def about():
