@@ -10,14 +10,13 @@ from bson.objectid import ObjectId
 # -- Initialization section --
 app = Flask(__name__)
 
-app.config['MONGO_DBNAME'] = os.getenv('DBNAME')
-DBNAME = app.config['MONGO_DBNAME']    
-app.config['USER'] = os.getenv('DBUSER')
-USER = app.config['USER']    
-app.config['MONGO_PWD'] = os.getenv('DBPWD')   
-PWD = app.config['MONGO_PWD']    
+#app.config['MONGO_DBNAME'] = os.getenv('DBNAME')
+#NAME = app.config['MONGO_DBNAME']    
+#app.config['USER'] = os.getenv('DBUSER')
+#USER = app.config['USER']    
+#D = app.config['MONGO_PWD']    
 # URI of database   
-app.config['MONGO_URI'] = f"mongodb+srv://{USER}:{PWD}@cluster0.seola.mongodb.net/{DBNAME}?retryWrites=true&w=majority"
+app.config['MONGO_URI'] = "mongodb+srv://New_Admin:q9Aq2bAnJZj22Q0O@cluster0.seola.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
 mongo = PyMongo(app)
 
