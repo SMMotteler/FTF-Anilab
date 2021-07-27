@@ -22,6 +22,10 @@ mongo = PyMongo(app)
 
 # -- Routes section --
 @app.route('/')
+@app.route('/homepage')
+def home():
+    return render_template('homepage.html')
+    
 @app.route('/index')
 def index():
     collection = mongo.db.recipe_collection
@@ -53,6 +57,3 @@ def remove_event(recipe_id):
    collection.delete_one({'_id': ObjectId(recipe_id)})
    return redirect('/')
 
-@app.route('/homepage')
-def home():
-    return render_template('homepage.html')
