@@ -58,7 +58,7 @@ def handle_recipe():
        collection = mongo.db.recipe_collection
        # insert the new data
        collection.insert({'recipe': recipe_name, 'img': img_url, 'user': user, 'ingredients': ingredients, 'recipe_steps': recipe_steps})
-       return render_template("yourgif.html", url = img_url, recipe=recipe_name, time = datetime.now())
+       return render_template("your_recipe.html", url = img_url, recipe=recipe_name, time = datetime.now())
 
 # Delete one using id
 @app.route('/remove/<recipe_id>')
@@ -67,3 +67,14 @@ def remove_event(recipe_id):
    collection.delete_one({'_id': ObjectId(recipe_id)})
    return redirect('/')
 
+@app.route('/recipes/<recipe_id>')
+def show_recipe(recipe_id):
+   return "This is a placeholder for showing individual recipes"
+
+@app.route('/about')
+def about():
+    return "This is a placeholder for our About page"
+
+@app.route('/form')
+def form():
+    return "This is a placeholder for our Form page"

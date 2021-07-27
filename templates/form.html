@@ -1,0 +1,38 @@
+<!-- TO PUT HERE: form to submit recipes, properly formatted -->
+<html>
+    <head>
+        <title>Submit a Recipe</title>
+    </head>
+    <body>
+        <div>
+            <h2>Submit your recipe here:</h2>
+            <form method="post" action="/your_recipe">
+            <ul>
+                <li>            
+                    <label for="user">Your Name:</label>
+                    <input type="text" name="user" value=""/>
+                </li>
+                <li>            
+                    <label for="recipe_name">Recipe Name:</label>
+                    <input type="text" name="recipe_name" value=""/>
+                </li>
+                <li>
+                    <label for="img_url">Image Url for Recipe Photo:</label>
+                    <input type="text" name="img_url" value=""/>
+                </li>
+                <li>                
+                    <label for="ingredients">Ingredients:</label>
+                    <textarea name="ingredients" rows="4" cols="50">
+                    </textarea>
+                </li>
+                <li>
+                    <label for="recipe_steps">Recipe Steps:</label>
+                    <textarea name="recipe_steps" rows="4" cols="50">
+                    </textarea>
+                </li>
+            </ul>
+            <br><input type="submit" value="Submit"/>
+        </form>
+        </div>
+    </body>
+</html>
