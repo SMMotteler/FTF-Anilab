@@ -34,7 +34,9 @@ def home():
 
 @app.route('/recipes')
 def handle_recipes():
-    return render_template('recipes.html')
+    collection = mongo.db.recipe_collection
+    recipes = collection.find({})
+    return render_template('recipes.html', recipes = recipes)
 
 @app.route('/index')
 def index():
@@ -77,4 +79,4 @@ def about():
 
 @app.route('/form')
 def form():
-    return "This is a placeholder for our Form page"
+    return render_template('form.html')
