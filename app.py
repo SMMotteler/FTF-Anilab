@@ -16,9 +16,14 @@ app.config['USER'] = os.getenv('DBUSER')
 USER = app.config['USER']    
 app.config['MONGO_PWD'] = os.getenv('DBPWD')   
 PWD = app.config['MONGO_PWD']    
+
+is_prod = os.environ.get('IS_HEROKU', None)
+if is_prod:
+    DBNAME = os.environ.get('DBNAME')
+    USER = os.environ.get('DBUSER')
+    PWD = os.environ.get('DBPWD')
 # URI of database   
 app.config['MONGO_URI'] = f"mongodb+srv://{USER}:{PWD}@cluster0.seola.mongodb.net/{DBNAME}?retryWrites=true&w=majority"
-
 mongo = PyMongo(app)
 
 # -- Routes section --
@@ -26,7 +31,7 @@ mongo = PyMongo(app)
 @app.route('/homepage')
 def home():
     return render_template('homepage.html')
-    
+
 @app.route('/index')
 def index():
     collection = mongo.db.recipe_collection
