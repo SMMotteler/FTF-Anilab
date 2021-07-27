@@ -10,6 +10,7 @@ from bson.objectid import ObjectId
 # -- Initialization section --
 app = Flask(__name__)
 
+<<<<<<< HEAD
 #app.config['MONGO_DBNAME'] = os.getenv('DBNAME')
 #NAME = app.config['MONGO_DBNAME']    
 #app.config['USER'] = os.getenv('DBUSER')
@@ -18,6 +19,22 @@ app = Flask(__name__)
 # URI of database   
 app.config['MONGO_URI'] = "mongodb+srv://New_Admin:q9Aq2bAnJZj22Q0O@cluster0.seola.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 
+=======
+app.config['MONGO_DBNAME'] = os.getenv('DBNAME')
+DBNAME = app.config['MONGO_DBNAME']    
+app.config['USER'] = os.getenv('DBUSER')
+USER = app.config['USER']    
+app.config['MONGO_PWD'] = os.getenv('DBPWD')   
+PWD = app.config['MONGO_PWD']    
+
+# is_prod = os.environ.get('IS_HEROKU', None)
+# if is_prod:
+#     DBNAME = os.environ.get('DBNAME')
+#     USER = os.environ.get('DBUSER')
+#     PWD = os.environ.get('DBPWD')
+# URI of database   
+app.config['MONGO_URI'] = f"mongodb+srv://{USER}:{PWD}@cluster0.seola.mongodb.net/{DBNAME}?retryWrites=true&w=majority"
+>>>>>>> 2c54c8473dd9db7318b18aad815f6dcb0707ceca
 mongo = PyMongo(app)
 
 # -- Routes section --
@@ -25,7 +42,7 @@ mongo = PyMongo(app)
 @app.route('/homepage')
 def home():
     return render_template('homepage.html')
-    
+
 @app.route('/index')
 def index():
     collection = mongo.db.recipe_collection
