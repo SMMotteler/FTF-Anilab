@@ -11,19 +11,19 @@ from bson.objectid import ObjectId
 app = Flask(__name__)
 
 app.config['MONGO_DBNAME'] = os.getenv('DBNAME')
-DBNAME = app.config['MONGO_DBNAME']    
+dbname = app.config['MONGO_DBNAME']    
 app.config['USER'] = os.getenv('DBUSER')
-USER = app.config['USER']    
+user = app.config['USER']    
 app.config['MONGO_PWD'] = os.getenv('DBPWD')   
-PWD = app.config['MONGO_PWD']    
+pwd = app.config['MONGO_PWD']    
 
-# is_prod = os.environ.get('IS_HEROKU', None)
-# if is_prod:
-#     DBNAME = os.environ.get('DBNAME')
-#     USER = os.environ.get('DBUSER')
-#     PWD = os.environ.get('DBPWD')
+is_prod = os.environ.get('IS_HEROKU', None)
+if is_prod:
+    dbname = os.environ.get('DBNAME')
+    user = os.environ.get('DBUSER')
+    pwd = os.environ.get('DBPWD')
 # URI of database   
-app.config['MONGO_URI'] = f"mongodb+srv://{USER}:{PWD}@cluster0.seola.mongodb.net/{DBNAME}?retryWrites=true&w=majority"
+app.config['MONGO_URI'] = f"mongodb+srv://{user}:{pwd}@cluster0.seola.mongodb.net/{dbname}?retryWrites=true&w=majority"
 mongo = PyMongo(app)
 
 # -- Routes section --
