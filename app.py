@@ -55,11 +55,12 @@ def handle_recipe():
        user = request.form['user']
        ingredients = request.form['ingredients']
        recipe_steps = request.form['recipe_steps']
+       source = request.form['source']
 
        # get the collection you want to use
        collection = mongo.db.recipe_collection
        # insert the new data
-       collection.insert({'recipe': recipe_name, 'img': img_url, 'user': user, 'ingredients': ingredients, 'recipe_steps': recipe_steps})
+       collection.insert({'recipe': recipe_name, 'img': img_url, 'user': user, 'ingredients': ingredients, 'recipe_steps': recipe_steps, 'source': source})
        return render_template("your_recipe.html", url = img_url, recipe=recipe_name, time = datetime.now())
 
 # Delete one using id

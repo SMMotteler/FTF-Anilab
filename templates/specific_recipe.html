@@ -50,7 +50,11 @@ body, h1,h2,h3,h4,h5,h6 { font-family: "Garamond", serif; }
           <li class="w3-padding-16">
             <img src= {{recipe.img}} style="object-fit:contain;width:100%">
           </li>
-          <li class="w3-padding-16">Ingredients: {{recipe.ingredients}}<br>Steps: {{recipe.recipe_steps}}</li>
+          <li class="w3-padding-16">Ingredients: {{recipe.ingredients}}<br>Steps: {{recipe.recipe_steps}}
+        <br>
+        <!-- TO PUT HERE: button with a link to the recipe source... something like
+        "Click here to go to recipe source" href={{recipe.source}} -->
+            </li>
         </ul>
       </div>
 </body>
