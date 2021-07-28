@@ -38,16 +38,16 @@ def handle_recipes():
     recipes = collection.find({})
     return render_template('recipes.html', recipes = recipes)
 
-@app.route('/index')
-def index():
-    collection = mongo.db.recipe_collection
-    recipes = collection.find({})
-    return render_template("index.html", time = datetime.now(), recipes=recipes)
+# @app.route('/index')
+# def index():
+#     collection = mongo.db.recipe_collection
+#     recipes = collection.find({})
+#     return render_template("index.html", time = datetime.now(), recipes=recipes)
 
 @app.route('/your_recipe', methods = ['GET', 'POST'])
 def handle_recipe():
     if request.method == "GET":
-       return "You didn't put in a recipe :("
+       return "Error! You didn't put in a recipe."
     else:
        print(request.form)
        recipe_name = request.form['recipe_name']
@@ -60,8 +60,9 @@ def handle_recipe():
        # get the collection you want to use
        collection = mongo.db.recipe_collection
        # insert the new data
-       collection.insert({'recipe': recipe_name, 'img': img_url, 'user': user, 'ingredients': ingredients, 'recipe_steps': recipe_steps, 'source': source})
-       return render_template("your_recipe.html", url = img_url, recipe=recipe_name, time = datetime.now())
+       recipe = {'recipe': recipe_name, 'img': img_url, 'user': user, 'ingredients': ingredients, 'recipe_steps': recipe_steps, 'source': source}
+       collection.insert(recipe)
+       return render_template("specific_recipe.html", recipe = recipe)
 
 # Delete one using id
 @app.route('/remove/<recipe_id>')
@@ -75,10 +76,6 @@ def show_recipe(recipe_id):
     collection = mongo.db.recipe_collection
     recipe = collection.find_one({'_id': ObjectId(recipe_id)})
     return render_template("specific_recipe.html", recipe = recipe)
-
-@app.route('/about')
-def about():
-    return "This is a placeholder for our About page"
 
 @app.route('/form')
 def form():
