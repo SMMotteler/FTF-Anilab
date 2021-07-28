@@ -3,13 +3,22 @@
 <html>
     <head>
         <title>Submit a Recipe</title>
+        <meta charset=“UTF-8”>
+    <meta name=“viewport” content=“width=device-width, initial-scale=1”>
+    <link rel=“stylesheet” href=“https://www.w3schools.com/w3css/4/w3.css”>
+    <link rel=“stylesheet” href=“https://fonts.googleapis.com/css?family=Montserrat”>
+    <link rel=“stylesheet” href=“https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css”>
+    <link rel=“stylesheet” href=“../static/css/style.css”>
+        <link rel="stylesheet" type="text/css" href="static/css/form.css?q={{ time }}" />
     </head>
     <body>
-        <div>
-            <h2>Submit your recipe here:</h2>
+        <div class="w3-padding-64 w3-content w3-text-black" id="contact">
+            <h2 class="w3-text-black">Submit your recipe here:</h2>Submit your recipe here:</h2>
+            <hr style="width:200px" class="w3-opacity">
             <form method="post" action="/your_recipe">
             <ul>
-                <li>            
+                <li>
+                    <div class="w3-section">
                     <label for="user">Your Name:</label>
                     <input type="text" name="user" value=""/>
                 </li>

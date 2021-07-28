@@ -82,4 +82,4 @@ def about():
 
 @app.route('/form')
 def form():
-    return render_template('form.html')
+    return render_template('form.html',time = datetime.now())
